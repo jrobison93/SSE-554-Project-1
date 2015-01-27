@@ -5,19 +5,13 @@
 		<products>
 			<product>
 				<description>Core Java, Volume I -- Fundamentals</description>
-				<price>
-					<amount>33.37</amount>
-					<currency>USD</currency>
-				</price>
+				<price>33.37</price>
 				<quantity>1</quantity>
 			</product>
 			
 			<product>
 				<description>Core Java, Volume II -- Advanced Features</description>
-				<price>
-					<amount>36.12</amount>
-					<currency>USD</currency>
-				</price>
+				<price>36.12</price>
 				<quantity>1</quantity>
 			</product>
 		</products>
@@ -54,10 +48,7 @@
 		<products>
 			<product>
 				<description>Operating System Concepts</description>
-				<price>
-					<amount>62.50</amount>
-					<currency>USD</currency>
-				</price>
+				<price>62.50</price>
 				<quantity>1</quantity>
 			</product>
 			
