@@ -1,0 +1,48 @@
+<transactions>
+	<invoice>
+		<products>
+			<product>
+				<description>Core Java, Volume I -- Fundamentals</description>
+				<price>
+					<amount>33.37</amount>
+					<currency>USD</currency>
+				</price>
+				<quantity>1</quantity>
+			</product>
+			
+			<product>
+				<description>Core Java, Volume II -- Advanced Features</description>
+				<price>
+					<amount>36.12</amount>
+					<currency>USD</currency>
+				</price>
+				<quantity>1</quantity>
+			</product>
+		</products>
+		
+		<shippinginfo>
+			<name>John Robison</name>
+			<street>750 Corder Road</street>
+			<city>Warner Robins</city>
+			<state>Georgia</state>
+			<zip>31088</zip>
+		</shippinginfo>
+		
+		<billinginfo>
+			<name>John Robison</name>
+			<street>101 Fir Ct.</street>
+			<city>Waleska</city>
+			<state>Georgia</state>
+			<zip>30183</zip>
+		</billinginfo>
+		
+		<paymentinfo>
+			<cardnum>0123456789012345</cardnum>
+			<expdate>
+				<month>8</month>
+				<year>2017</year>
+			</expdate>
+			<securitycode>012</securitycode>
+		</paymentinfo>		
+	</invoice>
+</transactions>
