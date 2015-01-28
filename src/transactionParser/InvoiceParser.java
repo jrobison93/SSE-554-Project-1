@@ -7,6 +7,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import org.w3c.dom.Document;
@@ -48,9 +49,9 @@ public class InvoiceParser
 	/**
 	 * @return The count of invoices contained in the XML file.
 	 */
-	public int countInvoices()
+	public int countInvoices() throws XPathExpressionException
 	{
-		return 0;
+		return Integer.parseInt(path.evaluate("count(/transactions/invoice)", doc));
 	}
 	
 	
