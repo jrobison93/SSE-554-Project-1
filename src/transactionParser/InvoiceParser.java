@@ -58,10 +58,19 @@ public class InvoiceParser
 	/**
 	 * 
 	 * @return A list of all invoices in the transactions file.
+	 * @throws XPathExpressionException 
 	 */
-	public int[] getInvoices()
+	public int[] getInvoices() throws XPathExpressionException
 	{
-		return null;
+		int invoices[] = new int[countInvoices()];
+		for(int i = 0; i < invoices.length; i++)
+		{
+			String temp = path.evaluate("/transactions/invoice[" + (i + 1) + "]/invoicenum", doc);
+			System.out.println(temp);
+			invoices[i] = Integer.parseInt(temp);
+		}
+		
+		return invoices;
 	}
 	
 	

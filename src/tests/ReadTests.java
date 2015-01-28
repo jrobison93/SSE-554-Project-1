@@ -24,7 +24,7 @@ public class ReadTests
 		InvoiceParser parser = new InvoiceParser(filePath);
 		int invoices[] = {1000, 1001};
 		
-		assertEquals(invoices, parser.getInvoices());
+		assertArrayEquals(invoices, parser.getInvoices());
 	}
 	
 	@Test
