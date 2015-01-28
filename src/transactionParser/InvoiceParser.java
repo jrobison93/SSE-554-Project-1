@@ -1,5 +1,17 @@
 package transactionParser;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathFactory;
+
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
+
 /**
  * This class is responsible for reading in transactions through an XML format
  * for a book store.
@@ -11,12 +23,24 @@ package transactionParser;
 
 public class InvoiceParser 
 {
+	private DocumentBuilder builder;
+	private XPath path;
+	private Document doc;
+	
 	/**
 	 * 
 	 * @param filename The file that is to be parsed.
 	 */
-	public InvoiceParser(String filename)
+	public InvoiceParser(String filename) throws IOException, SAXException, ParserConfigurationException
 	{
+		DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
+		builder = dbfactory.newDocumentBuilder();
+		
+		XPathFactory xpfactory = XPathFactory.newInstance();
+		path = xpfactory.newXPath();
+		
+		File f = new File(filename);
+		doc = builder.parse(f);
 		
 	}
 	
