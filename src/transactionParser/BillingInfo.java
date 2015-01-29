@@ -15,12 +15,34 @@ public class BillingInfo
 		this.securityCode = securityCode;
 	}
 	
-	public boolean compareInfo(BillingInfo bill)
+	@Override
+	public boolean equals(Object obj)
 	{
-		return this.cardNumber == bill.cardNumber &&
-				this.month == bill.month && 
-				this.year == bill.year &&
-				this.securityCode == bill.securityCode;
+		
+		if(obj == this)
+		{
+			return true;
+		}
+		
+		if(obj == null || obj.getClass() != this.getClass())
+		{
+			return false;
+		}
+		
+		
+		BillingInfo b = (BillingInfo)obj;
+		
+		return this.cardNumber == b.cardNumber &&
+				this.month == b.month && 
+				this.year == b.year &&
+				this.securityCode == b.securityCode; 
+		
+	}
+	
+	@Override
+	public int hashCode()
+	{
+		return super.hashCode();
 	}
 
 }

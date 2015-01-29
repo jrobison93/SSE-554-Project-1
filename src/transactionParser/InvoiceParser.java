@@ -161,9 +161,26 @@ public class InvoiceParser
 	/**
 	 * @param invoiceNum The associated invoice number.
 	 * @return The billing information associated with the invoice. 
+	 * @throws XPathExpressionException 
 	 */
-	public BillingInfo getBillingInfo(int invoiceNum)
+	public BillingInfo getBillingInfo(int invoiceNum) throws XPathExpressionException
 	{
+		int invoices[] = getInvoices();
+		
+		for(int i = 0; i < invoices.length; i++)
+		{
+			if(invoices[i] == invoiceNum)
+			{
+				long cardNum = Long.parseLong(path.evaluate("/transactions/invoice[" + (i + 1) + "]/paymentinfo/cardnum", doc));
+				int month = Integer.parseInt(path.evaluate("/transactions/invoice[" + (i + 1) + "]/paymentinfo/expdate/month", doc));
+				int year = Integer.parseInt(path.evaluate("/transactions/invoice[" + (i + 1) + "]/paymentinfo/expdate/year", doc));
+				int securityCode = Integer.parseInt(path.evaluate("/transactions/invoice[" + (i + 1) + "]/paymentinfo/securitycode", doc));
+				
+				
+				return new BillingInfo(cardNum, month, year, securityCode);
+				
+			}
+		}
 		return null;
 	}
 

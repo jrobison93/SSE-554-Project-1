@@ -59,7 +59,7 @@ public class ReadTests
 	public void testGetBillingInfo() throws Exception
 	{
 		InvoiceParser parser = new InvoiceParser(filePath);
-		BillingInfo info = new BillingInfo(123456789012345L, 8, 2017, 012);
+		BillingInfo info = new BillingInfo(123456789012345L, 8, 2017, 12);
 		
 		assertEquals(info, parser.getBillingInfo(1000));
 	}
