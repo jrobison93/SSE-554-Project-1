@@ -66,7 +66,6 @@ public class InvoiceParser
 		for(int i = 0; i < invoices.length; i++)
 		{
 			String temp = path.evaluate("/transactions/invoice[" + (i + 1) + "]/invoicenum", doc);
-			System.out.println(temp);
 			invoices[i] = Integer.parseInt(temp);
 		}
 		
@@ -77,9 +76,31 @@ public class InvoiceParser
 	/**
 	 * @param invoiceNum the associated invoice number.
 	 * @return A list of all purchased products.
+	 * @throws XPathExpressionException 
 	 */
-	public Product[] getProducts(int invoiceNum)
+	public Product[] getProducts(int invoiceNum) throws XPathExpressionException
 	{
+		int invoices[] = getInvoices();
+		
+		for(int i = 0; i < invoices.length; i++)
+		{
+			if(invoices[i] == invoiceNum)
+			{
+				int productCount = Integer.parseInt(path.evaluate("count(/transactions/invoice[" + (i + 1) + "]/products/product)", doc));
+				Product products[] = new Product[productCount];
+				
+				for(int j = 0; j < productCount; j++)
+				{
+					String description = path.evaluate("/transactions/invoice[" + (i + 1) + "]/products/product[" + (j + 1) + "]/description", doc);
+					double price = Double.parseDouble(path.evaluate("/transactions/invoice[" + (i + 1) + "]/products/product[" + (j + 1) + "]/price", doc));
+					int quantity = Integer.parseInt(path.evaluate("/transactions/invoice[" + (i + 1) + "]/products/product[" + (j + 1) + "]/quantity", doc));
+					
+					products[j] = new Product(description, price, quantity);
+				}
+				
+				return products;
+			}
+		}
 		return null;
 	}
 	

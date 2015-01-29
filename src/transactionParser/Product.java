@@ -27,5 +27,34 @@ public class Product
 	{
 		return quantity;
 	}
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+		
+		if(obj == this)
+		{
+			return true;
+		}
+		
+		if(obj == null || obj.getClass() != this.getClass())
+		{
+			return false;
+		}
+		
+		
+		Product p = (Product)obj;
+		
+		return this.description.equals(p.description) &&
+				this.price == p.price &&
+				this.quantity == p.quantity; 
+		
+	}
+	
+	@Override
+	public int hashCode()
+	{
+		return super.hashCode();
+	}
 
 }
