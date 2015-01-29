@@ -134,9 +134,26 @@ public class InvoiceParser
 	/**
 	 * @param invoiceNum The associated invoice number.
 	 * @return The billing address associated with the invoice. 
+	 * @throws XPathExpressionException 
 	 */
-	public Address getBillingAddress(int invoiceNum)
+	public Address getBillingAddress(int invoiceNum) throws XPathExpressionException
 	{
+		int invoices[] = getInvoices();
+		
+		for(int i = 0; i < invoices.length; i++)
+		{
+			if(invoices[i] == invoiceNum)
+			{
+				String name = path.evaluate("/transactions/invoice[" + (i + 1) + "]/billinginfo/name", doc);
+				String street = path.evaluate("/transactions/invoice[" + (i + 1) + "]/billinginfo/street", doc);
+				String city = path.evaluate("/transactions/invoice[" + (i + 1) + "]/billinginfo/city", doc);
+				String state = path.evaluate("/transactions/invoice[" + (i + 1) + "]/billinginfo/state", doc);
+				int zip = Integer.parseInt(path.evaluate("/transactions/invoice[" + (i + 1) + "]/billinginfo/zip", doc));
+				
+				return new Address(name, street, city, state, zip);
+				
+			}
+		}
 		return null;
 	}
 	
