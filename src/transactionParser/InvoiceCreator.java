@@ -7,7 +7,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -15,6 +14,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Text;
 
 public class InvoiceCreator 
 {
@@ -64,13 +64,35 @@ public class InvoiceCreator
 	
 	private Element createTextElement(String name, String text) 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		Text t = doc.createTextNode(text);
+		Element e = doc.createElement(name);
+		e.appendChild(t);
+		
+		return e;
+		
 	}
 
-	private Element createProducts(Product producs[])
+	private Element createProducts(Product products[])
 	{
-		return null;
+		Element e = doc.createElement("products");
+		
+		for(Product product : products)
+		{
+			e.appendChild(createProduct(product));
+		}
+		
+		return e;
+	}
+	
+	private Element createProduct(Product product)
+	{
+		Element e = doc.createElement("product");
+		
+		e.appendChild(createTextElement("description", product.getDescription()));
+		e.appendChild(createTextElement("price", "" + product.getPrice()));
+		e.appendChild(createTextElement("quantity", "" + product.getQuantity()));
+		
+		return e;
 	}
 	
 	private Element createAddress(Address address)
