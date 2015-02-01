@@ -17,14 +17,29 @@ public class Address
 		this.zipcode = zipcode;
 	}
 	
-	public boolean compareAddresses(Address address)
+	public String getName()
 	{
-		return this.name == address.name &&
-				this.street == address.street &&
-				this.city == address.city &&
-				this.state == address.state &&
-				this.zipcode == address.zipcode;
-		
+		return name;
+	}
+	
+	public String getStreet()
+	{
+		return street;
+	}
+	
+	public String getCity()
+	{
+		return city;
+	}
+	
+	public String getState()
+	{
+		return state;
+	}
+	
+	public int getZipCode()
+	{
+		return zipcode;
 	}
 	
 	@Override

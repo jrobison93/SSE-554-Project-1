@@ -55,8 +55,8 @@ public class InvoiceCreator
 		
 		e.appendChild(createTextElement("invoicenum", "" + invoice.getInvoiceNum()));
 		e.appendChild(createProducts(invoice.getProducts()));
-		e.appendChild(createAddress(invoice.getShippingAddress()));
-		e.appendChild(createAddress(invoice.getBillingAddress()));
+		e.appendChild(createAddress(invoice.getShippingAddress(), "shippinginfo"));
+		e.appendChild(createAddress(invoice.getBillingAddress(), "billinginfo"));
 		e.appendChild(createBilling(invoice.getBillingInfo()));
 		
 		return e;
@@ -95,9 +95,17 @@ public class InvoiceCreator
 		return e;
 	}
 	
-	private Element createAddress(Address address)
+	private Element createAddress(Address address, String tag)
 	{
-		return null;
+		Element e = doc.createElement(tag);
+		
+		e.appendChild(createTextElement("name", address.getName()));
+		e.appendChild(createTextElement("street", address.getStreet()));
+		e.appendChild(createTextElement("city", address.getCity()));
+		e.appendChild(createTextElement("state", address.getState()));
+		e.appendChild(createTextElement("zip", "" + address.getZipCode()));
+		
+		return e;
 	}
 	
 	private Element createBilling(BillingInfo info)
