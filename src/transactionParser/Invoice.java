@@ -16,5 +16,30 @@ public class Invoice
 		this.billingInfo = info;
 		this.invoiceNumber = num;
 	}
+	
+	public Product[] getProducts()
+	{
+		return products;
+	}
+	
+	public Address getShippingAddress()
+	{
+		return shippingAddr;
+	}
+	
+	public Address getBillingAddress()
+	{
+		return billingAddr;
+	}
+	
+	public BillingInfo getBillingInfo()
+	{
+		return billingInfo;
+	}
+	
+	public int getInvoiceNum()
+	{
+		return invoiceNumber;
+	}
 
 }
