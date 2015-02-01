@@ -15,6 +15,26 @@ public class BillingInfo
 		this.securityCode = securityCode;
 	}
 	
+	public long getCardNumber()
+	{
+		return cardNumber;
+	}
+	
+	public int getMonth()
+	{
+		return month;
+	}
+	
+	public int getYear()
+	{
+		return year;
+	}
+	
+	public int getSecurityCode()
+	{
+		return securityCode;
+	}
+	
 	@Override
 	public boolean equals(Object obj)
 	{

@@ -34,11 +34,13 @@ public class InvoiceCreator
 	public void createInvoices(ArrayList<Invoice> invoices) throws TransformerException
 	{
 		doc = builder.newDocument();
-		doc.createElement("transactions");
+		Element e = doc.createElement("transactions");
 		for( Invoice invoice : invoices)
 		{
-			doc.appendChild(createInvoice(invoice));
+			e.appendChild(createInvoice(invoice));
 		}
+		
+		doc.appendChild(e);
 		
 		TransformerFactory tfactory = TransformerFactory.newInstance();
 		Transformer transformer = tfactory.newTransformer();
@@ -110,7 +112,18 @@ public class InvoiceCreator
 	
 	private Element createBilling(BillingInfo info)
 	{
-		return null;
+		Element e = doc.createElement("paymentinfo");
+		
+		e.appendChild(createTextElement("cardnum", "" + info.getCardNumber()));
+		
+		Element exp = doc.createElement("expdate");
+		exp.appendChild(createTextElement("month", "" + info.getMonth()));
+		exp.appendChild(createTextElement("year", "" + info.getYear()));
+		e.appendChild(exp);
+		
+		e.appendChild(createTextElement("securitycode", String.format("%03d", info.getSecurityCode())));
+		
+		return e;
 	}
 
 }

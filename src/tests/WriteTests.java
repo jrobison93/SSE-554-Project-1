@@ -1,15 +1,20 @@
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.xml.xpath.XPathExpressionException;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Assert.*;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import transactionParser.Address;
@@ -83,7 +88,7 @@ public class WriteTests
 	
 	
 	@After
-	public void deleteFile()
+	public void deleteFile() throws IOException
 	{
 		File file = new File(testFile);
 		file.delete();
